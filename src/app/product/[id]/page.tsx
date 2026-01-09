@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { notFound } from "next/navigation";
+import { notFound, useParams } from "next/navigation";
 import { useContext } from "react";
 
 import { products } from "@/data/products";
@@ -10,17 +10,14 @@ import { Button } from "@/components/ui/button";
 import StarRating from "@/components/common/StarRating";
 import Reviews from "@/components/product/Reviews";
 
-export default function ProductDetailPage({
-  params,
-}: {
-  params: { id: string };
-}) {
+export default function ProductDetailPage() {
+  const params = useParams(); // ✅ FIX
   const { addToCart } = useContext(CartContext);
 
   const product = products.find((item) => item.id === params.id);
 
   if (!product) {
-    notFound(); // ✅ PROPER 404
+    notFound();
   }
 
   return (
