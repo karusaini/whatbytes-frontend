@@ -4,7 +4,7 @@ export const products = [
     title: "Apple iPhone 14",
     price: 69999,
     category: "electronics",
-    image: "/products/iphone13.png",
+    image: "/products/iphone14.png",
     description: "Latest Apple iPhone with A15 Bionic chip.",
     rating: 4.5,
   },
