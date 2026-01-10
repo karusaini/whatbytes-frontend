@@ -1,30 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { ShoppingCart, Search } from "lucide-react";
-import { Input } from "@/components/ui/input";
+import { ShoppingCart } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { useContext, useState, useEffect } from "react";
+import { useContext, Suspense } from "react";
 import { CartContext } from "@/context/CartContext";
-import { useRouter, useSearchParams } from "next/navigation";
+import SearchBar from "./SearchBar";
 
 export default function Header() {
   const { cartItems } = useContext(CartContext);
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get("search") || "");
-
-  useEffect(() => {
-    const params = new URLSearchParams(searchParams.toString());
-
-    if (query) params.set("search", query);
-    else params.delete("search");
-
-    router.replace(`/?${params.toString()}`);
-  }, [query]);
 
   return (
     <header className="sticky top-0 z-50 bg-white border-b">
@@ -33,15 +19,10 @@ export default function Header() {
           WhatBytes
         </Link>
 
-        <div className="flex-1 max-w-md relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
-          <Input
-            placeholder="Search products..."
-            className="pl-9"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-          />
-        </div>
+        {/* ✅ FIX HERE */}
+        <Suspense fallback={null}>
+          <SearchBar />
+        </Suspense>
 
         <div className="flex items-center gap-4">
           <Link href="/cart" className="relative">

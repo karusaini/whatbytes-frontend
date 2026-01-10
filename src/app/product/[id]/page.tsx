@@ -1,4 +1,5 @@
 "use client";
+export const dynamic = "force-dynamic";
 
 import Image from "next/image";
 import { useRouter, useParams } from "next/navigation";
@@ -12,11 +13,13 @@ import Reviews from "@/components/product/Reviews";
 import { Minus, Plus } from "lucide-react";
 
 export default function ProductDetailPage() {
-  const params = useParams();
+  const params = useParams<{ id: string }>();
+
+  const product = products.find((item) => item.id === params.id);
+
   const router = useRouter();
   const { addToCart } = useContext(CartContext);
 
-  const product = products.find((item) => item.id === params.id);
   const [quantity, setQuantity] = useState(1);
 
   if (!product) {
@@ -24,7 +27,7 @@ export default function ProductDetailPage() {
   }
 
   const increase = () => setQuantity((prev) => prev + 1);
-  const decrease = () => setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
+  const decrease = () => setQuantity((prev) => Math.max(1, prev - 1));
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
