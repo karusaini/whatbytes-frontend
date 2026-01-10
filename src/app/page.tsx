@@ -14,12 +14,10 @@ export default function HomePage() {
     <>
       <Header />
       <main className="max-w-7xl mx-auto p-4 grid grid-cols-1 lg:grid-cols-4 gap-6">
-        {/* Sidebar */}
         <aside className="lg:col-span-1">
           <ProductFilters />
         </aside>
 
-        {/* Product Grid */}
         <section className="lg:col-span-3">
           <ProductGrid products={filteredProducts} />
         </section>

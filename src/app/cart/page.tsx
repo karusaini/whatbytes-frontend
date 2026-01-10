@@ -18,7 +18,6 @@ export default function CartPage() {
 
   return (
     <div className="max-w-6xl mx-auto px-4 py-10">
-      {/* Back to Home */}
       <Link
         href="/"
         className="inline-flex items-center gap-2 text-sm text-blue-600 mb-6"
@@ -38,7 +37,6 @@ export default function CartPage() {
         </div>
       ) : (
         <div className="grid md:grid-cols-[1fr_300px] gap-6">
-          {/* Cart Items */}
           <div className="space-y-4">
             {cartItems.map((item) => (
               <CartItem
@@ -50,7 +48,6 @@ export default function CartPage() {
             ))}
           </div>
 
-          {/* Cart Summary */}
           <div className="border rounded-lg p-4 h-fit bg-white">
             <h2 className="font-semibold text-lg mb-4">Order Summary</h2>
 

@@ -23,7 +23,6 @@ export default function ProductFilters() {
 
   return (
     <div className="space-y-6">
-      {/* Category Filter Card */}
       <div className="bg-white rounded-lg border p-4 shadow-sm">
         <h3 className="font-semibold mb-3">Category</h3>
         <div className="space-y-2">
@@ -46,7 +45,6 @@ export default function ProductFilters() {
         </div>
       </div>
 
-      {/* Price Slider Card */}
       <div className="bg-white rounded-lg border p-4 shadow-sm">
         <h3 className="font-semibold mb-3">Price Range</h3>
         <Slider

@@ -23,7 +23,6 @@ export default function CartItem({
 }: CartItemProps) {
   return (
     <div className="flex gap-4 border rounded-lg p-4 items-center">
-      {/* Product Image */}
       <Image
         src={item.image}
         alt={item.title}
@@ -32,13 +31,11 @@ export default function CartItem({
         className="rounded-md object-cover"
       />
 
-      {/* Product Info */}
       <div className="flex-1">
         <h3 className="font-medium">{item.title}</h3>
         <p className="text-gray-600">₹{item.price}</p>
       </div>
 
-      {/* Quantity Controls */}
       <div className="flex items-center gap-2">
         <Button
           size="sm"
@@ -61,11 +58,11 @@ export default function CartItem({
         </Button>
       </div>
 
-      {/* Remove Button */}
       <Button
         size="icon"
         variant="destructive"
         onClick={() => onRemove(item.id)}
+        className="cursor-pointer"
       >
         <Trash2 className="w-4 h-4" />
       </Button>

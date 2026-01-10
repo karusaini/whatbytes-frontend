@@ -14,26 +14,24 @@ type CartContextType = {
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
   removeFromCart: (id: string) => void;
-  updateQuantity: (id: string, quantity: number) => void; // ✅ ADD THIS
+  updateQuantity: (id: string, quantity: number) => void;
 };
 
 export const CartContext = createContext<CartContextType>({
   cartItems: [],
   addToCart: () => {},
   removeFromCart: () => {},
-  updateQuantity: () => {}, // ✅ ADD THIS
+  updateQuantity: () => {},
 });
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  // Load from localStorage
   useEffect(() => {
     const stored = localStorage.getItem("cart");
     if (stored) setCartItems(JSON.parse(stored));
   }, []);
 
-  // Save to localStorage
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartItems));
   }, [cartItems]);

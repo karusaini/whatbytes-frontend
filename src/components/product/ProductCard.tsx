@@ -16,37 +16,31 @@ export default function ProductCard({ product }: any) {
         href={`/product/${product.id}`}
         className="flex flex-col items-center text-center flex-1"
       >
-        {/* Image */}
         <Image
           src={product.image}
           alt={product.title}
           width={220}
-          height={180}
-          className="rounded-md object-cover h-40"
+          height={220}
+          className="rounded-md object-contain w-full h-55 md:h-65"
         />
 
-        {/* Title */}
         <h3 className="mt-3 font-medium line-clamp-1">{product.title}</h3>
 
-        {/* Rating */}
         <div className="mt-1">
           <StarRating rating={product.rating} />
         </div>
 
-        {/* Description */}
         <p className="text-sm text-gray-500 mt-2 line-clamp-2">
           {product.description}
         </p>
       </Link>
 
-      {/* Price */}
       <p className="mt-3 font-semibold text-lg text-center">
         ₹{product.price.toLocaleString()}
       </p>
 
-      {/* Button */}
       <Button
-        className="w-full mt-3"
+        className="w-full mt-3 cursor-pointer"
         onClick={() => addToCart({ ...product, quantity: 1 })}
       >
         Add to Cart
