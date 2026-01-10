@@ -16,11 +16,9 @@ export default function ProductCard({ product }: any) {
         href={`/product/${product.id}`}
         className="flex flex-col items-center text-center flex-1"
       >
-        <Image
+        <img
           src={product.image}
           alt={product.title}
-          width={220}
-          height={220}
           className="rounded-md object-contain w-full h-55 md:h-65"
         />
 
